@@ -1,5 +1,5 @@
 package ChessBoard;
 
 public class ChessBoard {
-	private BoardSquare[][] board; 
+	private BoardSquare[][] board;
 }
