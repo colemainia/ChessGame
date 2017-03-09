@@ -15,16 +15,18 @@ public class ChessBoard {
 		whitePieces = new HashSet<BoardSquare>();
 		blackPieces = new HashSet<BoardSquare>();
 	}
-	public void SetBoard(String FileName) {
+	public void setBoard(String FileName) {
 		for (int i = 0; i < BOARD_SIZE; i++) {
 			for (int j = 0; j < BOARD_SIZE; j++) {
-				chessBoard[i][j] = new BoardSquare(i, j, ChessPiece.None, OccupiedBy.None);
+				chessBoard[i][j] = new BoardSquare(i, j, ChessPiece.None, PieceColor.None);
 			}
 		}
 	}
+	public Set<BoardSquare> getWhitePieces() {return whitePieces;}
+	public Set<BoardSquare> getBlackPieces() {return blackPieces;}
 	//May be useful? Don't know, but probably not going to be called anytime soon.
-	public void ChangeSquare(int rank, int file, ChessPiece chessPiece, OccupiedBy occupiedBy) {
-		chessBoard[rank][file] = new BoardSquare(rank, file, chessPiece, occupiedBy);
+	public void ChangeSquare(int row, int column, ChessPiece chessPiece, PieceColor pieceColor) {
+		chessBoard[row][column] = new BoardSquare(row, column, chessPiece, pieceColor);
 	}
 	public BoardSquare getSquareAt(int rank, int file) {return chessBoard[rank][file];}
 }

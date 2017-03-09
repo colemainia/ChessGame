@@ -1,5 +1,5 @@
 package ChessBoard;
 
-public enum OccupiedBy {
+public enum PieceColor {
 	Black, White, None;
 }

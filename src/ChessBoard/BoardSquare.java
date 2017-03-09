@@ -5,23 +5,26 @@ import java.util.Set;
 
 public class BoardSquare {
 	// rank and file: locations of square on board
-	private int rank;
-	private int file;
+	private int row;
+	private int column;
 	private Set<BoardSquare> controls;
 	private Set<BoardSquare> moveChoices;
 	private ChessPiece chessPiece;
-	private OccupiedBy occupiedBy;
-	public BoardSquare(int rank, int file, ChessPiece chessPiece, OccupiedBy occupiedBy) {
-		this.rank = rank;
-		this.file = file;
+	private PieceColor pieceColor;
+	public BoardSquare(int row, int column, ChessPiece chessPiece, PieceColor pieceColor) {
+		this.row = row;
+		this.column = column;
 		this.chessPiece = chessPiece;
-		this.occupiedBy = occupiedBy;
+		this.pieceColor = pieceColor;
 		controls = new HashSet<BoardSquare>();
 		calcControls();
 		moveChoices = new HashSet<BoardSquare>();
 	}
-	public boolean isOccupied() {
-		return (occupiedBy != OccupiedBy.None);
+	public ChessPiece getPiece() {
+		return chessPiece;
+	}
+	public PieceColor getColorOfPiece() {
+		return pieceColor;
 	}
 	private void calcControls() {
 		switch (chessPiece) {
@@ -47,8 +50,8 @@ public class BoardSquare {
 			break;
 		}
 	}
-	public int getRank() {return rank;}
-	public int getFile() {return file;}
+	public int getRow() {return row;}
+	public int getColumn() {return column;}
 	public Set<BoardSquare> getControls() {return controls;}
 	public Set<BoardSquare> getMoveChoices() {return moveChoices;}
 	private void pawnControls() {
